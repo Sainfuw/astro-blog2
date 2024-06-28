@@ -1,0 +1,29 @@
+---
+import Header from "@/components/Header.astro";
+import Title from "@/components/Title.astro";
+
+const props = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Blog</title>
+  </head>
+  <body>
+    <Header />
+    <main class="w-2/3 mx-auto my-8">
+      <Title
+        title={props.frontmatter.title}
+        title2={props.frontmatter.author}
+        subtitle={props.frontmatter.date}
+      />
+      <section class="prose-lg">
+        <slot />
+      </section>
+    </main>
+  </body>
+</html>
