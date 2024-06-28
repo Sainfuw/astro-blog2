@@ -1,16 +1,23 @@
 ---
+import BlogPreview from "@/components/BlogPreview.astro";
+import Title from "@/components/Title.astro";
+import Layout from "@/layouts/Layout.astro";
 
+let allPosts = await Astro.glob("./posts/*.mdx");
+allPosts = allPosts.sort(
+  (post1, post2) =>
+    new Date(post2.frontmatter.date).valueOf() -
+    new Date(post1.frontmatter.date).valueOf(),
+);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Welcome to my blog">
+  <Title
+    title="My Programing"
+    title2="Blog"
+    subtitle="Awesome blog with Astro"
+  />
+  <div class="grid gap-4 my-5">
+    {allPosts.map((post) => <BlogPreview post={post} />)}
+  </div>
+</Layout>

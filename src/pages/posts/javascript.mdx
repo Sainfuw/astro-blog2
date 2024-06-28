@@ -1,0 +1,25 @@
+---
+layout: "@/layouts/Layoutmd.astro"
+title: JavaScript Structure
+date: 23 Sep 2022
+author: Demian Ruiz
+description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse doloremque mollitia sequi fuga distinctio nam tempore nesciunt accusamus voluptas sunt deserunt, sint culpa cupiditate assumenda ipsa eius neque velit ex.
+image: https://cdn.pixabay.com/photo/2020/04/30/15/34/code-5113374_1280.jpg
+---
+import Image from "@/components/Image.astro";
+
+# {frontmatter.title} 
+##### {frontmatter.date} {frontmatter.author}
+
+<Image src={frontmatter.image} alt={frontmatter.title} />
+
+{frontmatter.description} <br /> <br />
+{frontmatter.description} <br /> <br />
+{frontmatter.description} <br /> <br />
+{frontmatter.description} <br /> <br />
+
+```javascript
+function test(a, b) {
+  return a + b;
+}
+```
