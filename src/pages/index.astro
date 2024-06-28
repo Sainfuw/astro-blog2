@@ -2,13 +2,11 @@
 import BlogPreview from "@/components/BlogPreview.astro";
 import Title from "@/components/Title.astro";
 import Layout from "@/layouts/Layout.astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 
-let allPosts = await Astro.glob("./posts/*.mdx");
-allPosts = allPosts.sort(
-  (post1, post2) =>
-    new Date(post2.frontmatter.date).valueOf() -
-    new Date(post1.frontmatter.date).valueOf(),
-);
+type Post = CollectionEntry<"post">;
+const allPosts = await getCollection("post");
 ---
 
 <Layout title="Welcome to my blog">
@@ -18,6 +16,6 @@ allPosts = allPosts.sort(
     subtitle="Awesome blog with Astro"
   />
   <div class="grid gap-4 my-5">
-    {allPosts.map((post) => <BlogPreview post={post} />)}
+    {allPosts.map((post: Post) => <BlogPreview post={post} />)}
   </div>
 </Layout>
