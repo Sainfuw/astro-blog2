@@ -1,8 +1,10 @@
 ---
 import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+type Post = CollectionEntry<"post">;
 
 export interface Props {
-  post: any;
+  post: Post;
 }
 
 const { post } = Astro.props;
